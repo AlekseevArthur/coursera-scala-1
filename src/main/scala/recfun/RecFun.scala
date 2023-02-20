@@ -21,14 +21,10 @@ object RecFun extends RecFunInterface:
    */
   def balance(chars: List[Char]): Boolean =
     def check(chars: List[Char], count: Int): Boolean =
-      if (count<0 || ((chars.isEmpty) && (count!=0))) 
-        then false
-      else if ((chars.isEmpty) && (count==0))
-        then true
-      else if (chars.head=='(')
-        then check(chars.tail, count+1)
-      else if (chars.head==')')
-        then check(chars.tail, count-1)
+      if (count<0 || ((chars.isEmpty) && (count!=0))) false
+      else if ((chars.isEmpty) && (count==0)) true
+      else if (chars.head=='(') check(chars.tail, count+1)
+      else if (chars.head==')') check(chars.tail, count-1)
       else check(chars.tail, count)
     check(chars, 0)
 
